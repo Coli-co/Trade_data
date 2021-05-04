@@ -7,7 +7,7 @@ import pymysql
 
 # 上市或上櫃類股網站
 driver = webdriver.Chrome('D:\\timothyTest\data_crawling\chromedriver')
-driver.get('https://www.wantgoo.com/stock/ranking/top-loser?market=OTC')
+driver.get('https://www.wantgoo.com/stock/ranking/top-gainer')
 time.sleep(2)
 
 
@@ -54,7 +54,7 @@ def sector_of_liststock_high():
                     time.sleep(2)
                     temp.append(sector)
                     driver.get(
-                        'https://www.wantgoo.com/stock/ranking/top-loser?market=OTC')
+                        'https://www.wantgoo.com/stock/ranking/top-gainer')
                     time.sleep(2)
                 # 收盤價
                     for l in range(k, k+1):
