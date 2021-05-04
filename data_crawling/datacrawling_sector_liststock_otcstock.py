@@ -7,14 +7,18 @@ import pymysql
 
 # 上市或上櫃類股網站
 driver = webdriver.Chrome('D:\\timothyTest\data_crawling\chromedriver')
-driver.get('https://www.wantgoo.com/stock/ranking/top-gainer')
+driver.get('https://www.wantgoo.com/stock/ranking/top-gainer?market=Listed')
 time.sleep(2)
+# b = "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s)" % j
+# b1 = driver.find_element_by_css_selector(b)
+# rankingData > tr:nth-child(1) > td:nth-child(11)
+# rankingData > tr:nth-child(2) > td:nth-child(11)
 
 
 def sector_of_liststock_high():
     box = []
     # 日期
-    for q in range(10):
+    for q in range(1, 11):
         temp = []
         z = driver.find_elements_by_css_selector(
             "time[class='text-muted ml-auto']")[0]
@@ -24,14 +28,16 @@ def sector_of_liststock_high():
         # 上市類股代碼
         for i in range(q, q+1):
             # temp = []
-            a = driver.find_elements_by_class_name("lt")[i]
-            stock_num = a.text
+            a = "#rankingData > tr:nth-child(%s) > td.lt > a" % (q)
+            a1 = driver.find_element_by_css_selector(a)
+            stock_num = a1.text
             temp.append(stock_num)
             time.sleep(2)
             # 上市類股名稱
             for j in range(i, i+1):
-                b = driver.find_elements_by_class_name("zw")[j]
-                stock_name = b.text
+                b = "#rankingData > tr:nth-child(%s) > td.zw > a" % (q)
+                b1 = driver.find_element_by_css_selector(b)
+                stock_name = b1.text
                 temp.append(stock_name)
                 time.sleep(2)
                 driver.get('https://www.wantgoo.com/stock')
@@ -54,41 +60,48 @@ def sector_of_liststock_high():
                     time.sleep(2)
                     temp.append(sector)
                     driver.get(
-                        'https://www.wantgoo.com/stock/ranking/top-gainer')
+                        'https://www.wantgoo.com/stock/ranking/top-gainer?market=listed')
                     time.sleep(2)
                 # 收盤價
                     for l in range(k, k+1):
-                        c = driver.find_elements_by_css_selector(
-                            "td[c-model-dazzle='class:upDn,text:close']")[l]
-                        close_price = c.text
+                        c = "#rankingData > tr:nth-child(%s) > td:nth-child(4)" % (
+                            q)
+                        c1 = driver.find_element_by_css_selector(c)
+                        close_price = c1.text
                         temp.append(close_price)
                         time.sleep(2)
                 # 漲跌
                         for m in range(l, l+1):
-                            d = driver.find_elements_by_css_selector(
-                                "td[c-model-dazzle='class:upDn,text:`{changeSymbol}{change}`']")[m]
-                            high_and_low = d.text
+                            d = "#rankingData > tr:nth-child(%s) > td:nth-child(5)" % (
+                                q)
+                            d1 = driver.find_element_by_css_selector(d)
+                            high_and_low = d1.text
                             temp.append(high_and_low)
                             time.sleep(2)
                 # 漲幅%
                             for n in range(m, m+1):
-                                e = driver.find_elements_by_css_selector(
-                                    "td[c-model-dazzle='class:upDn,text:changePercent']")[n]
-                                width_of_high = e.text
+                                e = "#rankingData > tr:nth-child(%s) > td:nth-child(6)" % (
+                                    q)
+                                e1 = driver.find_element_by_css_selector(e)
+                                width_of_high = e1.text
                                 temp.append(width_of_high)
                                 time.sleep(2)
                 # 振幅%
                                 for o in range(n, n+1):
-                                    f = driver.find_elements_by_css_selector(
-                                        "td[c-model='amplitute']")[o]
-                                    amplitude = f.text
+                                    f = "#rankingData > tr:nth-child(%s) > td:nth-child(8)" % (
+                                        q)
+                                    f1 = driver.find_element_by_css_selector(
+                                        f)
+                                    amplitude = f1.text
                                     temp.append(amplitude)
                                     time.sleep(2)
                 # 成交量
                                     for p in range(o, o+1):
-                                        g = driver.find_elements_by_css_selector(
-                                            "td[c-model='volume']")[p]
-                                        volume = g.text
+                                        g = "#rankingData > tr:nth-child(%s) > td:nth-child(11)" % (
+                                            q)
+                                        g1 = driver.find_element_by_css_selector(
+                                            g)
+                                        volume = g1.text
                                         temp.append(volume)
                                         time.sleep(2)
 

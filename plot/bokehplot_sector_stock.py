@@ -23,12 +23,12 @@ def liststock_high_rank():
     width_of_high = []
     high_and_low = []
     # sector = []
-    row = cursor.fetchmany(6)
+    rows = cursor.fetchmany(6)
     # print(row)
-    for i in range(len(row)):
+    for i in range(len(rows)):
         temp = []
-        for j in range(len(row[i])):
-            temp.append(row[i][j])
+        for j in range(len(rows[i])):
+            temp.append(rows[i][j])
         box.append(temp)
     # print(box)
 
@@ -127,7 +127,7 @@ dodge() : every bar in each group has the same category, to avoid the
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-p2 = liststock_high_group_by_sector()
+# p2 = liststock_high_group_by_sector()
 
 
 def liststock_high_and_low_stack_bars_by_sector():
@@ -173,7 +173,7 @@ stack bars that represent liststock_high(positive) and
 liststock_low (negative) values.
 """
 
-p3 = liststock_high_and_low_stack_bars_by_sector()
+# p3 = liststock_high_and_low_stack_bars_by_sector()
 
 # sliders = column(amp, freq, phase, offset)
 

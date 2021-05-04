@@ -32,7 +32,7 @@ def choose_date():
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = driver.find_element_by_link_text("3")
+    button1 = driver.find_element_by_link_text("4")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
@@ -96,7 +96,7 @@ def option_callitem_crawling():
     # print(box)
 
 
-# call_rawdata = option_callitem_crawling()
+call_rawdata = option_callitem_crawling()
 
 
 def data_crawling_extract(call_rawdata):
@@ -116,7 +116,7 @@ def data_crawling_extract(call_rawdata):
     return box2
 
 
-# call_realdata = data_crawling_extract(call_rawdata)
+call_realdata = data_crawling_extract(call_rawdata)
 
 
 def mysql_renewdata_insert(call_realdata):
@@ -146,8 +146,8 @@ def mysql_renewdata_insert(call_realdata):
     conn.close()
 
 
-# mysql_renewdata_insert(call_realdata)
-# driver.close()
+mysql_renewdata_insert(call_realdata)
+driver.close()
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -199,7 +199,7 @@ def option_put_item_crawling():
     # print(box1)
 
 
-put_rawdata = option_put_item_crawling()
+# put_rawdata = option_put_item_crawling()
 
 
 def data_crawling_extract(put_rawdata):
@@ -220,7 +220,7 @@ def data_crawling_extract(put_rawdata):
     return box2
 
 
-put_realdata = data_crawling_extract(put_rawdata)
+# put_realdata = data_crawling_extract(put_rawdata)
 
 
 def mysql_renewdata_insert(put_realdata):
@@ -250,6 +250,6 @@ def mysql_renewdata_insert(put_realdata):
     conn.close()
 
 
-mysql_renewdata_insert(put_realdata)
-driver.close()
+# mysql_renewdata_insert(put_realdata)
+# driver.close()
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

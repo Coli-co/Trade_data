@@ -47,7 +47,6 @@ def call_info():
     for m in range(40):
         factor = ()
         factor += (expire_date[m], strike_price[m])
-        # factor += [(expire_date[0+k], strike_price[0+l])]
         print(factor)
         container.append(factor)
     print(container)
@@ -58,7 +57,7 @@ def call_info():
     # open_interest
     x = call_open_interest
     # print(x)
-
+    output_file("call_open_interest.html")
     p = figure(x_range=FactorRange(*container), plot_height=150, title="Open Interest of Call",
                sizing_mode="scale_width")
 
@@ -133,6 +132,7 @@ def put():
     x = put_open_interest
     # print(x)
 
+    output_file("put_open_interest.html")
     p1 = figure(x_range=FactorRange(*container1), plot_height=150, title="Open Interest of Put",
                 sizing_mode="scale_width")
 
