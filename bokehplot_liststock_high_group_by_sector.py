@@ -7,12 +7,6 @@ from bokeh.palettes import GnBu3, OrRd3
 import pymysql
 
 
-"""
-Plot figure by grouping the sector of liststock high.
-dodge() : every bar in each group has the same category, to avoid the
-          bars will overlap, use the dodge().
-"""
-
 # Connect to MySQL Database
 conn = pymysql.connect(host='localhost', port=3306, user='root',
                        passwd='1qaz2wsx', db='trader_info', charset='utf8')
@@ -40,17 +34,17 @@ for i in range(len(rows)):
     high.append(float(box[i][6].replace("▲", "")))
 
 # for plot: sector categories count
-for k in range(30):
+for k in range(50):
     item = sector[k]
     if sector[k] not in sector_categories:
         sector_categories.append(sector[k])
     else:
         pass
 
-# print(sector_categories)
-
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 def data1():
     conn = pymysql.connect(host='localhost', port=3306, user='root',
                            passwd='1qaz2wsx', db='trader_info', charset='utf8')
@@ -74,13 +68,13 @@ def data1():
             temp.append(rows[i][j])
         box1.append(temp)
 
-        sector1.append(box[i][4])
+        sector1.append(box1[i][4])
         # high digit transform
-        high1.append(float(box[i][6].replace("▲", "")))
+        high1.append(float(box1[i][6].replace("▲", "")))
 
     data1 = []
     for l in range(len(sector1)):
-        if sector[l] not in hub1:
+        if sector1[l] not in hub1:
             hub1[sector1[l]] = {}
             hub1[sector1[l]]["Total"] = round(high1[l], 2)
             hub1[sector1[l]]["count"] = 1
@@ -88,9 +82,9 @@ def data1():
             hub1[sector1[l]]["Total"] += round(high1[l], 2)
             hub1[sector1[l]]["count"] += 1
             # digit control
-        a = hub1[sector1[l]]["Total"] / hub1[sector[l]]["count"]
+        a = hub1[sector1[l]]["Total"] / hub1[sector1[l]]["count"]
         real = round(a, 2)
-        hub1[sector[l]]["Ave"] = real
+        hub1[sector1[l]]["Ave"] = real
 
     for r in range(len(sector_categories)):
         if sector_categories[r] not in hub1:
@@ -256,6 +250,12 @@ val3 = data3()
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # Plot
+
+"""
+Plot figure by grouping the sector of liststock high.
+dodge() : every bar in each group has the same category, to avoid the
+    bars will overlap, use the dodge().
+"""
 output_file("liststock_high_group_by_sector.html")
 
 sector = sector_categories

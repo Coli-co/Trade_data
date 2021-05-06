@@ -81,55 +81,6 @@ p1 = liststock_high_rank()
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
-def liststock_high_group_by_sector():
-
-    output_file("liststock_high_group_by_sector.html")
-
-    sector = ['電零組', '電腦週邊', '電機', '電器電纜', '鋼鐵', '通信網路',
-              '航運', '紡織', '玻璃', '橡膠', '半導體', '其它電子', '食品',
-              '化學', '貿易百貨', '光電', '營建']
-    date = ['20210426', '20210427', '20210428']
-
-    width_of_high = {'sector': sector,
-                     '20210426': [2.25, 0, 3.95, 0, 0, 0, 5.43, 0, 0, 33.00, 2.23, 6.25, 0, 0, 0, 0, 0],
-                     '20210427': [1.30, 2.45, 0, 2.00, 5.10, 1.40, 3.85, 4.70, 1.55, 0, 21.15, 0, 0, 0, 0, 0, 0],
-                     '20210428': [3.15, 0, 0, 0, 0, 4.25, 0, 3.25, 1.45, 0, 46.00, 1.95,  15.00, 1.15, 0, 0, 0]}
-    source = ColumnDataSource(data=width_of_high)
-
-    # p = figure(x_range=sector, y_range=(0, 50), plot_height=250, title="Sector of Liststock High",
-    #            toolbar_location=None, tools="")
-
-    p = figure(x_range=sector, y_range=(0, 50), plot_height=250, title="Sector of Liststock High",
-               sizing_mode="scale_width")
-
-    p.vbar(x=dodge('sector', -0.25, range=p.x_range), top='20210426', width=0.2, source=source,
-           color="#c9d9d3", legend_label="20210426")
-
-    p.vbar(x=dodge('sector',  0.0,  range=p.x_range), top='20210427', width=0.2, source=source,
-           color="#718dbf", legend_label="20210427")
-
-    p.vbar(x=dodge('sector',  0.25, range=p.x_range), top='20210428', width=0.2, source=source,
-           color="#e84d60", legend_label="20210428")
-
-    p.x_range.range_padding = 0.01
-    p.xgrid.grid_line_color = None
-    p.legend.location = "top_left"
-    p.legend.orientation = "horizontal"
-
-    show(p)
-
-
-"""
-Plot figure by grouping the sector of liststock high.
-dodge() : every bar in each group has the same category, to avoid the
-          bars will overlap, use the dodge().
-"""
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-# p2 = liststock_high_group_by_sector()
-
-
 def liststock_high_and_low_stack_bars_by_sector():
     output_file("liststock_high_and_low_stack_barsby_sector.html")
 
@@ -150,7 +101,7 @@ def liststock_high_and_low_stack_bars_by_sector():
     # p = figure(y_range=sector, plot_height=250, x_range=(-50, 50), title="Liststock high/low by sector",
     #            toolbar_location=None)
 
-    p = figure(y_range=sector, plot_height=250, x_range=(-50, 50), title="Liststock high/low by sector",
+    p = figure(y_range='sector', plot_height=250, x_range=(-50, 50), title="Liststock high/low by sector",
                sizing_mode="scale_width")
 
     p.hbar_stack(date, y='sector', height=0.9, color=GnBu3, source=ColumnDataSource(low),
