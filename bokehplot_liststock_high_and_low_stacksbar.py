@@ -104,7 +104,7 @@ def high_data1():
         b = hub1[index]["Ave"]
 
         data1.append(b)
-    del data1[15:]
+    # del data1[15:]
     # print(data1)
     return hub1, data1
 
@@ -182,7 +182,7 @@ def high_data2():
         b = hub2[index]["Ave"]
 
         data2.append(b)
-    del data2[15:]
+    # del data2[15:]
 
     return hub2, data2
 # 18
@@ -257,7 +257,7 @@ def high_data3():
         b = hub3[index]["Ave"]
 
         data3.append(b)
-    del data3[15:]
+    # del data3[15:]
     return hub3, data3
 # 18
 

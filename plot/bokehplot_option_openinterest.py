@@ -5,6 +5,9 @@ from bokeh.models import FactorRange
 from bokeh.plotting import figure, show
 from bokeh.layouts import row, column, gridplot
 
+# Remember tp adjust the expire_date and open_interest of
+# call and pur before plotting
+
 
 def call_info():
     # def connect_to_database():
@@ -15,7 +18,7 @@ def call_info():
     cursor = conn.cursor()
     # call_data_selected
     row1 = cursor.execute(
-        "SELECT * FROM trader_info.optioncall_daily_trade where date =20210503")
+        "SELECT * FROM trader_info.optioncall_daily_trade where date =20210506")
 
     # confirm the data print
     # for call
@@ -66,8 +69,8 @@ def call_info():
 
     p.vbar(x=container, top=x, width=0.9, alpha=0.5)
     # biggest of call open interest
-    p.line(x=["202105W1", "202105", "202106"],
-           y=[5637, 9210, 860], color="red", line_width=2)
+    p.line(x=["202105W2", "202105", "202106"],
+           y=[4132, 8962, 696], color="red", line_width=2)
 
     p.y_range.start = 0
     p.x_range.range_padding = 0.1
@@ -92,7 +95,7 @@ def put():
     cursor = conn2.cursor()
 
     rows2 = cursor.execute(
-        "SELECT * FROM trader_info.optionput_daily_trade where date =20210503")
+        "SELECT * FROM trader_info.optionput_daily_trade where date =20210506")
     # for put
     box1 = []
     strike_price1 = []
@@ -141,8 +144,8 @@ def put():
 
     p1.vbar(x=container1, top=x, width=0.9, alpha=0.5)
     # biggest of call interest
-    p1.line(x=["202105W1", "202105", "202106"],
-            y=[12319, 11239, 5650], color="red", line_width=2)
+    p1.line(x=["202105W2", "202105", "202106"],
+            y=[2673, 12802, 5559], color="red", line_width=2)
 
     p1.y_range.start = 0
     p1.x_range.range_padding = 0.1
@@ -159,7 +162,7 @@ b = put()
 
 
 def call_and_put_combining_plots(a, b):
-    show(row(a, b))
+    # show(row(a, b))
 
     grid = gridplot([[a, b]], plot_width=850, plot_height=550)
     show(grid)
