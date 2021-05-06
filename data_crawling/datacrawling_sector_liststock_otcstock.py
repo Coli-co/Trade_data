@@ -8,11 +8,12 @@ import pymysql
 # 上市或上櫃類股網站
 driver = webdriver.Chrome('D:\\timothyTest\data_crawling\chromedriver')
 driver.get('https://www.wantgoo.com/stock/ranking/top-gainer?market=Listed')
-time.sleep(2)
+time.sleep(3)
 # b = "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s)" % j
 # b1 = driver.find_element_by_css_selector(b)
 # rankingData > tr:nth-child(1) > td:nth-child(11)
 # rankingData > tr:nth-child(2) > td:nth-child(11)
+# rankingData > tr:nth-child(1) > td:nth-child(4)
 
 
 def sector_of_liststock_high():
@@ -49,7 +50,7 @@ def sector_of_liststock_high():
                         "span[class='twitter-typeahead'] input[type='text']")
                     # 輸入類股名稱
                     searchstock.send_keys(stock_num)
-                    time.sleep(2)
+                    time.sleep(3)
                     # 按下ENTER
                     searchstock.send_keys(Keys.ENTER)
                     time.sleep(3)
@@ -57,11 +58,11 @@ def sector_of_liststock_high():
                     h = driver.find_elements_by_css_selector(
                         "a[class='nav-link'] span[class='mr-1']")[1]
                     sector = h.text
-                    time.sleep(2)
+                    time.sleep(5)
                     temp.append(sector)
                     driver.get(
                         'https://www.wantgoo.com/stock/ranking/top-gainer?market=listed')
-                    time.sleep(2)
+                    time.sleep(5)
                 # 收盤價
                     for l in range(k, k+1):
                         c = "#rankingData > tr:nth-child(%s) > td:nth-child(4)" % (
