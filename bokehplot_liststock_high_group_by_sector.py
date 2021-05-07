@@ -4,6 +4,7 @@ from bokeh.models import ColumnDataSource, FactorRange
 from bokeh.palettes import Spectral6
 from bokeh.transform import dodge
 from bokeh.palettes import GnBu3, OrRd3
+from bokeh.layouts import row, column, gridplot
 import pymysql
 
 
@@ -270,7 +271,7 @@ width_of_high = {'sector': sector_categories,
                  '20210428': val3[1]}
 source = ColumnDataSource(data=width_of_high)
 
-p = figure(x_range=sector, y_range=(0, 50), plot_height=250, title="Sector of Liststock High",
+p = figure(x_range=sector, y_range=(0, 40), plot_height=250, title="Sector of Liststock High",
            sizing_mode="scale_width")
 
 p.vbar(x=dodge('sector', -0.25, range=p.x_range), top='20210426', width=0.2, source=source,
@@ -287,8 +288,10 @@ p.x_range.range_padding = 0.05
 p.xgrid.grid_line_color = None
 p.legend.location = "top_left"
 p.legend.orientation = "horizontal"
-
-show(p)
+p.title.text_font_size = "30px"
+# show(p)
+grid = gridplot([[p]], plot_width=850, plot_height=550)
+show(grid)
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
