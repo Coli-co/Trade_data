@@ -18,7 +18,7 @@ def call_info():
     cursor = conn.cursor()
     # call_data_selected
     row1 = cursor.execute(
-        "SELECT * FROM trader_info.optioncall_daily_trade where date =20210506")
+        "SELECT * FROM trader_info.optioncall_daily_trade where date =20210510")
 
     # confirm the data print
     # for call
@@ -70,7 +70,7 @@ def call_info():
     p.vbar(x=container, top=x, width=0.9, alpha=0.5)
     # biggest of call open interest
     p.line(x=["202105W2", "202105", "202106"],
-           y=[4132, 8962, 696], color="red", line_width=2)
+           y=[14204, 9457, 1407], color="red", line_width=2)
 
     p.y_range.start = 0
     p.x_range.range_padding = 0.1
@@ -95,7 +95,7 @@ def put():
     cursor = conn2.cursor()
 
     rows2 = cursor.execute(
-        "SELECT * FROM trader_info.optionput_daily_trade where date =20210506")
+        "SELECT * FROM trader_info.optionput_daily_trade where date =20210510")
     # for put
     box1 = []
     strike_price1 = []
@@ -145,7 +145,7 @@ def put():
     p1.vbar(x=container1, top=x, width=0.9, alpha=0.5)
     # biggest of call interest
     p1.line(x=["202105W2", "202105", "202106"],
-            y=[2673, 12802, 5559], color="red", line_width=2)
+            y=[9065, 11223, 5923], color="red", line_width=2)
 
     p1.y_range.start = 0
     p1.x_range.range_padding = 0.1
