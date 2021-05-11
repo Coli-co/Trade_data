@@ -33,7 +33,7 @@ def choose_date():
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = driver.find_element_by_link_text("10")
+    button1 = driver.find_element_by_link_text("11")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
