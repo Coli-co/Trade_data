@@ -8,7 +8,7 @@ import pymysql
 
 # option daily trade website
 
-driver = webdriver.Chrome('D:\\timothyTest\data_crawling\chromedriver')
+driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
 driver.get('https://www.taifex.com.tw/cht/3/optDailyMarketSummary')
 time.sleep(2)
 
@@ -33,7 +33,7 @@ def choose_date():
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = driver.find_element_by_link_text("11")
+    button1 = driver.find_element_by_link_text("12")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
@@ -96,7 +96,7 @@ def option_callitem_crawling():
     return box
     # print(temp)
 
-    # print(box)
+    print(box)
 
 
 # call_rawdata = option_callitem_crawling()
@@ -202,7 +202,7 @@ def option_put_item_crawling():
     # print(box1)
 
 
-put_rawdata = option_put_item_crawling()
+# put_rawdata = option_put_item_crawling()
 
 
 def data_crawling_extract(put_rawdata):
@@ -223,7 +223,7 @@ def data_crawling_extract(put_rawdata):
     return box2
 
 
-put_realdata = data_crawling_extract(put_rawdata)
+# put_realdata = data_crawling_extract(put_rawdata)
 
 
 def mysql_renewdata_insert(put_realdata):
@@ -253,6 +253,6 @@ def mysql_renewdata_insert(put_realdata):
     conn.close()
 
 
-mysql_renewdata_insert(put_realdata)
-driver.close()
+# mysql_renewdata_insert(put_realdata)
+# driver.close()
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 import pymysql
 
 # 上市或上櫃類股網站
-driver = webdriver.Chrome('D:\\timothyTest\data_crawling\chromedriver')
+driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
 driver.get('https://www.wantgoo.com/stock/ranking/top-gainer?market=Listed')
 time.sleep(3)
 # b = "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s)" % j
