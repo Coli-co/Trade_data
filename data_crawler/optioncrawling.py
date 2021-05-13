@@ -12,6 +12,7 @@ driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
 driver.get('https://www.taifex.com.tw/cht/3/optDailyMarketSummary')
 time.sleep(2)
 
+# 調整日期
 # 爬取data時候要注意每日表格總欄位數目不一樣
 
 
@@ -33,7 +34,7 @@ def choose_date():
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = driver.find_element_by_link_text("12")
+    button1 = driver.find_element_by_link_text("13")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
@@ -47,7 +48,7 @@ def choose_date():
     time.sleep(2)
 
 
-choose_date()
+# choose_date()
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -55,7 +56,7 @@ choose_date()
 def option_callitem_crawling():
     box = []
     # 日期資料
-    for o in range(2, 42):
+    for o in range(2, 32):
         temp = []
         p = driver.find_element_by_css_selector(
             '#printhere > div:nth-child(3) > h3 > span.right')
@@ -158,7 +159,7 @@ def mysql_renewdata_insert(call_realdata):
 def option_put_item_crawling():
     box1 = []
     # 日期資料
-    for o in range(2, 42):
+    for o in range(2, 32):
         temp = []
         p = driver.find_element_by_css_selector(
             '#printhere > div:nth-child(3) > h3 > span.right')
