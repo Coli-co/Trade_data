@@ -14,6 +14,7 @@ time.sleep(2)
 
 # 調整日期
 # 爬取data時候要注意每日表格總欄位數目不一樣
+# 網站架構有時候會改，要注意一下
 
 
 def choose_date():
@@ -34,7 +35,7 @@ def choose_date():
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = driver.find_element_by_link_text("13")
+    button1 = driver.find_element_by_link_text("14")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
@@ -49,8 +50,6 @@ def choose_date():
 
 
 # choose_date()
-
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 def option_callitem_crawling():
@@ -67,7 +66,7 @@ def option_callitem_crawling():
         for i in range(o, o+1):
             # temp = []
             a = driver.find_element_by_css_selector(
-                '#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(1) > td > table > tbody > tr > th')
+                "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(1) > td > table > tbody > tr > td")
             call = a.text
             temp.append(call)
     # 項目欄位
@@ -153,8 +152,6 @@ def mysql_renewdata_insert(call_realdata):
 # mysql_renewdata_insert(call_realdata)
 # driver.close()
 
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 
 def option_put_item_crawling():
     box1 = []
@@ -169,7 +166,7 @@ def option_put_item_crawling():
     # 賣權
         for i in range(o, o+1):
             a = driver.find_element_by_css_selector(
-                "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(1) > td > table > tbody > tr > th")
+                "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(1) > td > table > tbody > tr > td")
             put = a.text
             temp.append(put)
     # 項目欄位 (第2欄位算起)
@@ -256,4 +253,3 @@ def mysql_renewdata_insert(put_realdata):
 
 # mysql_renewdata_insert(put_realdata)
 # driver.close()
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
