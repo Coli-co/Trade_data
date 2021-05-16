@@ -53,7 +53,7 @@ def sector_of_liststock_high():
                     time.sleep(3)
                     # 按下ENTER
                     searchstock.send_keys(Keys.ENTER)
-                    time.sleep(3)
+                    time.sleep(4)
                     # 定位股票種類
                     h = driver.find_elements_by_css_selector(
                         "a[class='nav-link'] span[class='mr-1']")[1]
@@ -61,7 +61,7 @@ def sector_of_liststock_high():
                     time.sleep(5)
                     temp.append(sector)
                     driver.get(
-                        'https://www.wantgoo.com/stock/ranking/top-gainer?market=listed')
+                        'https://www.wantgoo.com/stock/ranking/top-gainer?market=Listed')
                     time.sleep(5)
                 # 收盤價
                     for l in range(k, k+1):
