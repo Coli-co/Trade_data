@@ -1,12 +1,19 @@
+dotenvSample/
+data_crawler/__pycache__
+data_crawler/chromedriver.exe
+
 .env
 
-dotenvSample/
 
-__pycache__
+
+plot/__pycache__
 
 
 readfile_plot/*.csv
 
+data_crawler/
+
+# timothyTest/*.html
 
 
-
+test.py

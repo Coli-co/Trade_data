@@ -39,14 +39,15 @@ for i in range(len(rows)):
     high.append(float(box[i][6].replace("▲", "")))
 
 # for plot: sector categories count
-for k in range(50):
+for k in range(65):
     item = sector[k]
     if sector[k] not in sector_categories:
         sector_categories.append(sector[k])
     else:
         pass
-
-
+print("sector_categories is :")
+print(sector_categories)
+print()
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
@@ -58,7 +59,7 @@ def data1():
     cursor = conn.cursor()
 
     rows = cursor.execute(
-        "SELECT * FROM %s.%s where date = 20210426 "
+        "SELECT * FROM %s.%s where date = 20210503 "
         % (os.getenv("mysql_db"), os.getenv("table_d")))
     rows = cursor.fetchmany(10)
 
@@ -121,13 +122,19 @@ val = data1()
 
 
 def data2():
-    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
-                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
+    conn = pymysql.connect(
+        host=os.getenv("mysql_host"),
+        port=int(os.getenv("mysql_port")),
+        user=os.getenv("mysql_user"),
+        passwd=os.getenv("mysql_passwd"),
+        db=os.getenv("mysql_db"),
+        charset=os.getenv("mysql_charset")
+    )
 
     cursor = conn.cursor()
 
     rows = cursor.execute(
-        "SELECT * FROM %s.%s where date = 20210427"
+        "SELECT * FROM %s.%s where date = 20210514"
         % (os.getenv("mysql_db"), os.getenv("table_d")))
     rows = cursor.fetchmany(10)
 
@@ -178,15 +185,44 @@ def data2():
         b = hub2[index]["Ave"]
 
         data2.append(b)
+    # print(sector2)
 
-    return hub2, data2
+    return hub2, data2, sector2
 
 
 val2 = data2()
+print("val2 is: ")
+print(val2)
+print()
 # hub2
-# print(val2[0])
+print("val2[0] is :")
+print(val2[0])
+
+print()
 # data2
-# print(val2[1])
+print("val2[1] is :")
+print(val2[1])
+print(val2[1][0])
+# sector2
+print()
+print("val2[2] is : ")
+print(val2[2])
+print()
+
+extra = [None] * 18
+for i in range(len(sector_categories)):
+    val2[0][sector_categories[i]]["position"] = i
+
+print(val2[0])
+print(extra)
+
+for j in range(len(val2[2])):
+    index = val2[2][j]
+    realposition = val2[0][index]["position"]
+    print(realposition)
+# print(realposition)
+#     extra[realposition] = val2[0][j]["Total"]
+# print(extra)
 
 
 def data3():
@@ -196,7 +232,7 @@ def data3():
     cursor = conn.cursor()
 
     rows = cursor.execute(
-        "SELECT * FROM %s.%s where date = 20210428"
+        "SELECT * FROM %s.%s where date = 20210517"
         % (os.getenv("mysql_db"), os.getenv("table_d")))
     rows = cursor.fetchmany(10)
 
@@ -270,26 +306,26 @@ output_file("liststock_high_group_by_sector.html")
 sector = sector_categories
 
 
-date = ['20210426', '20210427', '20210428']
+date = ['20210503', '20210514', '20210517']
 
 
 width_of_high = {'sector': sector_categories,
-                 '20210426': val[1],
-                 '20210427': val2[1],
-                 '20210428': val3[1]}
+                 '20210503': val[1],
+                 '20210514': val2[1],
+                 '20210517': val3[1]}
 source = ColumnDataSource(data=width_of_high)
 
 p = figure(x_range=sector, y_range=(0, 40), plot_height=250, title="Sector of Liststock High",
            sizing_mode="scale_width")
 
-p.vbar(x=dodge('sector', -0.25, range=p.x_range), top='20210426', width=0.2, source=source,
-       color="#c9d9d3", legend_label="20210426")
+p.vbar(x=dodge('sector', -0.25, range=p.x_range), top='20210503', width=0.2, source=source,
+       color="#c9d9d3", legend_label="20210503")
 
-p.vbar(x=dodge('sector',  0.0,  range=p.x_range), top='20210427', width=0.2, source=source,
-       color="#718dbf", legend_label="20210427")
+p.vbar(x=dodge('sector',  0.0,  range=p.x_range), top='20210514', width=0.2, source=source,
+       color="#718dbf", legend_label="20210514")
 
-p.vbar(x=dodge('sector',  0.25, range=p.x_range), top='20210428', width=0.2, source=source,
-       color="#e84d60", legend_label="20210428")
+p.vbar(x=dodge('sector',  0.25, range=p.x_range), top='20210517', width=0.2, source=source,
+       color="#e84d60", legend_label="20210517")
 
 
 p.x_range.range_padding = 0.05
@@ -299,7 +335,7 @@ p.legend.orientation = "horizontal"
 p.title.text_font_size = "30px"
 # show(p)
 grid = gridplot([[p]], plot_width=850, plot_height=550)
-show(grid)
+# show(grid)
 
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
