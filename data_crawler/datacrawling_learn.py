@@ -25,8 +25,8 @@ driver.get('https://zh-tw.facebook.com/')
 email = driver.find_element_by_id("email")
 password = driver.find_element_by_id("pass")
 
-email.send_keys('awestlifeblue@gmail.com')
-password.send_keys('timothy611329')
+email.send_keys('awese@gmail.com')
+password.send_keys('abcdefg')
 password.submit()
 
 time.sleep(3)
@@ -50,5 +50,5 @@ for title in titles:
 
     if post:
         print(post.getText())
-        
+
 driver.quit()

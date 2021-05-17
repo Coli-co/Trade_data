@@ -4,16 +4,14 @@ from bs4 import BeautifulSoup
 # 注意：使用Keys方法要先引入以下這一行
 from selenium.webdriver.common.keys import Keys
 import pymysql
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # 上市或上櫃類股網站
 driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
 driver.get('https://www.wantgoo.com/stock/ranking/top-gainer?market=Listed')
 time.sleep(3)
-# b = "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s)" % j
-# b1 = driver.find_element_by_css_selector(b)
-# rankingData > tr:nth-child(1) > td:nth-child(11)
-# rankingData > tr:nth-child(2) > td:nth-child(11)
-# rankingData > tr:nth-child(1) > td:nth-child(4)
 
 
 def sector_of_liststock_high():
@@ -151,18 +149,19 @@ real_data_get = data_crawling_extract(stock_info)
 def mysql_renewdata_insert(real_data_get):
 
     # 建立連線
-    conn = pymysql.connect(host='localhost', port=3306, user='root',
-                           passwd='1qaz2wsx', db='trader_info', charset='utf8')
+    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
+                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(real_data_get)):
-        sql = "insert into sector_of_liststock_high\
+        sql = "insert into %s\
                     (date, stock_number, stock_name, sector, close_price,\
                     high_and_low, width_of_high, amplitude, volume)\
                     values('%s', %s, '%s', '%s', %s, '%s', %s, %s, %s)"\
-                    % (real_data_get[i][0], real_data_get[i][1], real_data_get[i][2],
-                       real_data_get[i][3], real_data_get[i][4], real_data_get[i][5],
-                       real_data_get[i][6], real_data_get[i][7], real_data_get[i][8])
+                    % (os.getenv("table_d"), real_data_get[i][0], real_data_get[i][1],
+                       real_data_get[i][2], real_data_get[i][3], real_data_get[i][4],
+                       real_data_get[i][5], real_data_get[i][6], real_data_get[i][7],
+                       real_data_get[i][8])
         try:
             cursor.execute(sql)
             conn.commit()

@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 # 注意：使用Keys方法要先引入以下這一行
 from selenium.webdriver.common.keys import Keys
 import pymysql
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
 
@@ -415,21 +418,23 @@ Remembered to adjust the date below:
 
 """
 
-# a = market_bargainingchip()
-# print(a)
+a = market_bargainingchip()
+print(a)
 
 
 def insert_renewdata_into_database(a):
     # 建立連線
-    conn = pymysql.connect(host='localhost', port=3306, user='root',
-                           passwd='1qaz2wsx', db='trader_info', charset='utf8')
+    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
+                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset")
+                           )
+
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(a)):
-        sql = "insert into market_bargainingchip\
+        sql = "insert into %s\
                     (date, market_close_price, foreign_capital_cost, foreign_capital_average_cost, 10_biglegalperson_variety, retail_TX, retail_MTX, retail_sc)\
                     values('%s', %s, '%s', '%s', '%s', '%s', '%s', '%s')"\
-                    % (a[i][0], a[i][1], a[i][2], a[i][3], a[i][4], a[i][5], a[i][6], a[i][7])
+                    % (os.getenv("table_a"), a[i][0], a[i][1], a[i][2], a[i][3], a[i][4], a[i][5], a[i][6], a[i][7])
         try:
             cursor.execute(sql)
             conn.commit()
@@ -444,5 +449,5 @@ def insert_renewdata_into_database(a):
     conn.close()
 
 
-# b = insert_renewdata_into_database(a)
-# driver.close()
+b = insert_renewdata_into_database(a)
+driver.close()

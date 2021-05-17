@@ -4,6 +4,9 @@ from bokeh.io import output_file, show
 from bokeh.models import FactorRange
 from bokeh.plotting import figure, show
 from bokeh.layouts import row, column, gridplot
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Remember tp adjust the expire_date and open_interest of
 # call and pur before plotting
@@ -12,13 +15,13 @@ from bokeh.layouts import row, column, gridplot
 def call_info():
     # def connect_to_database():
     # Connect to MySQL Database
-    conn = pymysql.connect(host='localhost', port=3306, user='root',
-                           passwd='1qaz2wsx', db='trader_info', charset='utf8')
+    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
+                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
 
     cursor = conn.cursor()
     # call_data_selected
     row1 = cursor.execute(
-        "SELECT * FROM trader_info.optioncall_daily_trade where date =20210510")
+        "SELECT * FROM %s.%s where date =20210510" % (os.getenv("mysql_db"), os.getenv("table_b")))
 
     # confirm the data print
     # for call
@@ -87,15 +90,15 @@ def call_info():
 a = call_info()
 
 
-def put():
+def put_info():
 
-    conn2 = pymysql.connect(host='localhost', port=3306, user='root',
-                            passwd='1qaz2wsx', db='trader_info', charset='utf8')
+    conn2 = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
+                            passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
 
     cursor = conn2.cursor()
 
     rows2 = cursor.execute(
-        "SELECT * FROM trader_info.optionput_daily_trade where date =20210510")
+        "SELECT * FROM %s.%s where date =20210510" % (os.getenv("mysql_db"), os.getenv("table_c")))
     # for put
     box1 = []
     strike_price1 = []
@@ -158,7 +161,7 @@ def put():
 
 """Connect to database to get option put data and plot"""
 
-b = put()
+b = put_info()
 
 
 def call_and_put_combining_plots(a, b):

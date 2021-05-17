@@ -5,16 +5,20 @@ from bokeh.palettes import Spectral6
 from bokeh.transform import dodge
 from bokeh.palettes import GnBu3, OrRd3
 import pymysql
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def liststock_high_rank():
     # Connect to MySQL Database
-    conn = pymysql.connect(host='localhost', port=3306, user='root',
-                           passwd='1qaz2wsx', db='store', charset='utf8')
+    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
+                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
 
     cursor = conn.cursor()
 
-    rows = cursor.execute("SELECT * FROM trader_info.sector_of_liststock_high")
+    rows = cursor.execute("SELECT * FROM %s.%s"
+                          % (os.getenv("mysql_db"), os.getenv("table_d")))
 
     # confirm the data print and store in box, stock_name
     #  and wodth_of_high

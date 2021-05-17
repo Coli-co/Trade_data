@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 # 注意：使用Keys方法要先引入以下這一行
 from selenium.webdriver.common.keys import Keys
 import pymysql
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # option daily trade website
@@ -49,13 +52,13 @@ def choose_date():
     time.sleep(2)
 
 
-# choose_date()
+choose_date()
 
 
 def option_callitem_crawling():
     box = []
     # 日期資料
-    for o in range(2, 32):
+    for o in range(2, 3):
         temp = []
         p = driver.find_element_by_css_selector(
             '#printhere > div:nth-child(3) > h3 > span.right')
@@ -125,16 +128,17 @@ def data_crawling_extract(call_rawdata):
 def mysql_renewdata_insert(call_realdata):
 
     # 建立連線
-    conn = pymysql.connect(host='localhost', port=3306, user='root',
-                           passwd='1qaz2wsx', db='trader_info', charset='utf8')
+    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
+                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(call_realdata)):
-        sql = "insert into optioncall_daily_trade\
-                    (date, call_or_put, expire_date, strike_price, open_interest)\
-                    values('%s', '%s', '%s', %s, %s)"\
-                    % (call_realdata[i][0], call_realdata[i][1], call_realdata[i][2],
-                       call_realdata[i][3], call_realdata[i][4])
+        sql = "insert into %s\
+            (date, call_or_put, expire_date, strike_price, open_interest)\
+            values('%s', '%s', '%s', %s, %s)"\
+            % (os.getenv("table_b"), call_realdata[i][0], call_realdata[i][1], call_realdata[i][2],
+               call_realdata[i][3], call_realdata[i][4])
+
         try:
             cursor.execute(sql)
             conn.commit()
@@ -156,7 +160,7 @@ def mysql_renewdata_insert(call_realdata):
 def option_put_item_crawling():
     box1 = []
     # 日期資料
-    for o in range(2, 32):
+    for o in range(2, 3):
         temp = []
         p = driver.find_element_by_css_selector(
             '#printhere > div:nth-child(3) > h3 > span.right')
@@ -200,7 +204,7 @@ def option_put_item_crawling():
     # print(box1)
 
 
-# put_rawdata = option_put_item_crawling()
+put_rawdata = option_put_item_crawling()
 
 
 def data_crawling_extract(put_rawdata):
@@ -221,22 +225,22 @@ def data_crawling_extract(put_rawdata):
     return box2
 
 
-# put_realdata = data_crawling_extract(put_rawdata)
+put_realdata = data_crawling_extract(put_rawdata)
 
 
 def mysql_renewdata_insert(put_realdata):
 
     # 建立連線
-    conn = pymysql.connect(host='localhost', port=3306, user='root',
-                           passwd='1qaz2wsx', db='trader_info', charset='utf8')
+    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
+                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(put_realdata)):
-        sql = "insert into optionput_daily_trade\
+        sql = "insert into %s\
                     (date, call_or_put, expire_date, strike_price, open_interest)\
                     values('%s', '%s', '%s', %s, %s)"\
-                    % (put_realdata[i][0], put_realdata[i][1], put_realdata[i][2],
-                       put_realdata[i][3], put_realdata[i][4])
+                    % (os.getenv("table_c"), put_realdata[i][0], put_realdata[i][1],
+                       put_realdata[i][2], put_realdata[i][3], put_realdata[i][4])
         try:
             cursor.execute(sql)
             conn.commit()
@@ -251,5 +255,5 @@ def mysql_renewdata_insert(put_realdata):
     conn.close()
 
 
-# mysql_renewdata_insert(put_realdata)
-# driver.close()
+mysql_renewdata_insert(put_realdata)
+driver.close()

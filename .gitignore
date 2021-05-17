@@ -1,0 +1,12 @@
+.env
+
+dotenvSample/
+
+__pycache__
+
+
+readfile_plot/*.csv
+
+
+
+
