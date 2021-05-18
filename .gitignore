@@ -5,7 +5,6 @@ data_crawler/chromedriver.exe
 .env
 
 
-
 plot/__pycache__
 
 
@@ -13,7 +12,8 @@ readfile_plot/*.csv
 
 data_crawler/
 
-# timothyTest/*.html
 
+
+*.html
 
 test.py
