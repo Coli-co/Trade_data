@@ -22,6 +22,7 @@ Bargaining chip distribution means that captial flows direction, it is very like
 * Database:MySQL
 * Plot:Bokeh
 
+
 ### Images description ###
 ---
 **1.Liststock high rank**
@@ -61,7 +62,7 @@ Bargaining chip distribution means that captial flows direction, it is very like
 <img src = "https://colicontainer.s3-ap-northeast-1.amazonaws.com/firstFolder/open_interest_of_option.png">
 
 
-
+---
 **5. Strategies momentum**
 
 + Check stability of different strategies. 
