@@ -12,9 +12,8 @@ Bargaining chip distribution means that captial flows direction, it is very like
 * **rough analysis**
 
   + Use python packages to crawl data from TAIFEX or WANTGOO page. 
-  + Stored the frequently-updated data into database.
-  + Connected to database to grab and arrange data.
-  + Used Bokeh to generate different categories of figures.
+  + Stored the closing data into database.
+  + Used Bokeh to make visualization.
 
 
 ### Tools ###
@@ -30,7 +29,8 @@ Bargaining chip distribution means that captial flows direction, it is very like
  + Info about liststock which dominate the day of high. 
  
 
-<img src="liststock_high_rank.png" alt="drawing" width="800"/>
+<img src="https://colicontainer.s3-ap-northeast-1.amazonaws.com/firstFolder/liststock_high_rank.png" alt="drawing" width="800"/>
+
 
 ---
 
@@ -39,7 +39,7 @@ Bargaining chip distribution means that captial flows direction, it is very like
  + Info about liststock which dominate high by diffrent sector in a period of time. 
 
 
-<img src="liststock_high_sector.png" alt="drawing" width="850"/>
+<img src="https://colicontainer.s3-ap-northeast-1.amazonaws.com/firstFolder/liststock_high_sector.png" alt="drawing" width="850"/>
 
 ---
 
@@ -47,7 +47,10 @@ Bargaining chip distribution means that captial flows direction, it is very like
 
  + Info about liststock which  dominate high or low by different sector in a period of time.
 
-![](liststock_highandlow_sector.png)
+
+
+<img src ="https://colicontainer.s3-ap-northeast-1.amazonaws.com/firstFolder/liststock_highandlow_sector.png">
+
 
 ---
 
@@ -55,7 +58,22 @@ Bargaining chip distribution means that captial flows direction, it is very like
 
  + Info about open interest of option call/put of different expire date.
  
-![](open_interest_of_option.png)
+<img src = "https://colicontainer.s3-ap-northeast-1.amazonaws.com/firstFolder/open_interest_of_option.png">
+
+
+
+**5. Strategies momentum**
+
++ Check stability of different strategies. 
+
+
+
+<img src ="https://colicontainer.s3-ap-northeast-1.amazonaws.com/firstFolder/Short_strategies_net_%2Cmomentum.png">
+
+
+
+
+
 
 
 ### Contact ###

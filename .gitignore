@@ -12,6 +12,7 @@ readfile_plot/*.csv
 
 data_crawler/
 
+*.png
 
 
 *.html
