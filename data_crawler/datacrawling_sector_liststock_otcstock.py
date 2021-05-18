@@ -10,7 +10,7 @@ load_dotenv()
 
 # 上市或上櫃類股網站
 driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
-driver.get('https://www.wantgoo.com/stock/ranking/top-loser?market=OTC')
+driver.get('https://www.wantgoo.com/stock/ranking/top-gainer?market=Listed')
 time.sleep(3)
 
 
@@ -59,7 +59,7 @@ def sector_of_liststock_high():
                     time.sleep(5)
                     temp.append(sector)
                     driver.get(
-                        'https://www.wantgoo.com/stock/ranking/top-loser?market=OTC')
+                        'https://www.wantgoo.com/stock/ranking/top-gainer?market=Listed')
                     time.sleep(4)
                 # 收盤價
                     for l in range(k, k+1):
@@ -158,7 +158,7 @@ def mysql_renewdata_insert(real_data_get):
                     (date, stock_number, stock_name, sector, close_price,\
                     high_and_low, width_of_high, amplitude, volume)\
                     values('%s', %s, '%s', '%s', %s, '%s', %s, %s, %s)"\
-                    % (os.getenv("table_g"), real_data_get[i][0], real_data_get[i][1],
+                    % (os.getenv("table_d"), real_data_get[i][0], real_data_get[i][1],
                        real_data_get[i][2], real_data_get[i][3], real_data_get[i][4],
                        real_data_get[i][5], real_data_get[i][6], real_data_get[i][7],
                        real_data_get[i][8])
