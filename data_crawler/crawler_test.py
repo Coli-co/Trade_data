@@ -52,13 +52,13 @@ def insert_data_and_closeprice_into_database(a):
         sql = "insert into % s\
                     (date, market_close_price)\
                     values('%s', % s)" % ((os.getenv("table_a"), a[i][0], a[i][1])
-        # try:
-        cursor.execute(sql)
-        conn.commit()
-        #     print("market_bargainingchip successfully inserted.")
-        # except:
-        #     print("market_bargainingchip update failed!")
-        #     conn.rollback()
+    # try:
+    cursor.execute(sql)
+    conn.commit()
+    #     print("market_bargainingchip successfully inserted.")
+    # except:
+    #     print("market_bargainingchip update failed!")
+    #     conn.rollback()
 
     # 關閉遊標
     cursor.close()
