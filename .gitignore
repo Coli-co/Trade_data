@@ -18,3 +18,5 @@ data_crawler/
 *.html
 
 test.py
+
+README.md.backup
