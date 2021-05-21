@@ -56,11 +56,11 @@ def sector_of_liststock_high():
                     h = driver.find_elements_by_css_selector(
                         "a[class='nav-link'] span[class='mr-1']")[1]
                     sector = h.text
-                    time.sleep(4)
+                    time.sleep(3)
                     temp.append(sector)
                     driver.get(
                         'https://www.wantgoo.com/stock/ranking/top-loser?market=OTC')
-                    time.sleep(4)
+                    time.sleep(3)
                 # 收盤價
                     for l in range(k, k+1):
                         c = "#rankingData > tr:nth-child(%s) > td:nth-child(4)" % (
