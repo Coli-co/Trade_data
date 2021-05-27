@@ -102,7 +102,7 @@ def option_callitem_crawling():
     print(box)
 
 
-# call_rawdata = option_callitem_crawling()
+call_rawdata = option_callitem_crawling()
 
 
 def data_crawling_extract(call_rawdata):
@@ -122,14 +122,18 @@ def data_crawling_extract(call_rawdata):
     return box2
 
 
-# call_realdata = data_crawling_extract(call_rawdata)
+call_realdata = data_crawling_extract(call_rawdata)
 
 
 def mysql_renewdata_insert(call_realdata):
 
     # 建立連線
-    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
-                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
+    conn = pymysql.connect(host=os.getenv("AWS_Host"),
+                           port=int(os.getenv("AWS_Port")),
+                           user=os.getenv("AWS_User"),
+                           passwd=os.getenv("AWS_Pass"),
+                           db=os.getenv("AWS_DB"),
+                           charset=os.getenv("AWS_Charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(call_realdata)):
@@ -204,7 +208,7 @@ def option_put_item_crawling():
     # print(box1)
 
 
-put_rawdata = option_put_item_crawling()
+# put_rawdata = option_put_item_crawling()
 
 
 def data_crawling_extract(put_rawdata):
@@ -225,14 +229,18 @@ def data_crawling_extract(put_rawdata):
     return box2
 
 
-put_realdata = data_crawling_extract(put_rawdata)
+# put_realdata = data_crawling_extract(put_rawdata)
 
 
 def mysql_renewdata_insert(put_realdata):
-
     # 建立連線
-    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
-                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
+    conn = pymysql.connect(host=os.getenv("AWS_Host"),
+                           port=int(os.getenv("AWS_Port")),
+                           user=os.getenv("AWS_User"),
+                           passwd=os.getenv("AWS_Pass"),
+                           db=os.getenv("AWS_DB"),
+                           charset=os.getenv("AWS_Charset"))
+
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(put_realdata)):
@@ -255,5 +263,5 @@ def mysql_renewdata_insert(put_realdata):
     conn.close()
 
 
-mysql_renewdata_insert(put_realdata)
-driver.close()
+# mysql_renewdata_insert(put_realdata)
+# driver.close()

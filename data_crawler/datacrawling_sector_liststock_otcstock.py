@@ -533,8 +533,12 @@ Withdraw data from crawling.
 
 def listwinner_data_insert(real_data_get1):
     # 建立連線
-    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
-                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
+    conn = pymysql.connect(host=os.getenv("AWS_Host"),
+                           port=int(os.getenv("AWS_Port")),
+                           user=os.getenv("AWS_User"),
+                           passwd=os.getenv("AWS_Pass"),
+                           db=os.getenv("AWS_DB"),
+                           charset=os.getenv("AWS_Charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(real_data_get1)):
@@ -565,8 +569,12 @@ mysql_data_insert1 = listwinner_data_insert(real_data_get1)
 
 def listloser_data_insert(real_data_get2):
     # 建立連線
-    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
-                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
+    conn = pymysql.connect(host=os.getenv("AWS_Host"),
+                           port=int(os.getenv("AWS_Port")),
+                           user=os.getenv("AWS_User"),
+                           passwd=os.getenv("AWS_Pass"),
+                           db=os.getenv("AWS_DB"),
+                           charset=os.getenv("AWS_Charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(real_data_get2)):
@@ -597,8 +605,12 @@ def listloser_data_insert(real_data_get2):
 
 def otcwinner_data_insert(real_data_get3):
     # 建立連線
-    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
-                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
+    conn = pymysql.connect(host=os.getenv("AWS_Host"),
+                           port=int(os.getenv("AWS_Port")),
+                           user=os.getenv("AWS_User"),
+                           passwd=os.getenv("AWS_Pass"),
+                           db=os.getenv("AWS_DB"),
+                           charset=os.getenv("AWS_Charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(real_data_get3)):
@@ -629,8 +641,12 @@ def otcwinner_data_insert(real_data_get3):
 
 def otcloser_data_insert(real_data_get4):
     # 建立連線
-    conn = pymysql.connect(host=os.getenv("mysql_host"), port=int(os.getenv("mysql_port")), user=os.getenv("mysql_user"),
-                           passwd=os.getenv("mysql_passwd"), db=os.getenv("mysql_db"), charset=os.getenv("mysql_charset"))
+    conn = pymysql.connect(host=os.getenv("AWS_Host"),
+                           port=int(os.getenv("AWS_Port")),
+                           user=os.getenv("AWS_User"),
+                           passwd=os.getenv("AWS_Pass"),
+                           db=os.getenv("AWS_DB"),
+                           charset=os.getenv("AWS_Charset"))
     # 建立操作遊標, 查詢資料預設為元組型別
     cursor = conn.cursor()
     for i in range(len(real_data_get4)):

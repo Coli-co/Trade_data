@@ -1,6 +1,5 @@
 dotenvSample/
-data_crawler/__pycache__
-data_crawler/chromedriver.exe
+
 
 .env
 
@@ -10,7 +9,7 @@ plot/__pycache__
 
 readfile_plot/*.csv
 
-data_crawler/
+
 
 *.png
 
@@ -23,6 +22,8 @@ README.md.backup
 
 Strategies analysis/
 
-tradedump.sql
+
+
+utf8.dump
 
 RDS info.txt
