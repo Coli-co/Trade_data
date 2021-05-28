@@ -9,20 +9,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# option daily trade website
+def get_page():
+    driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
+    driver.get('https://www.taifex.com.tw/cht/3/optDailyMarketSummary')
 
-driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
-driver.get('https://www.taifex.com.tw/cht/3/optDailyMarketSummary')
-time.sleep(2)
-
-# 調整日期
-# 爬取data時候要注意每日表格總欄位數目不一樣
-# 網站架構有時候會改，要注意一下
+    return driver
 
 
-def choose_date():
+run_option = get_page()
+
+
+def choose_date(run_option):
+    time.sleep(2)
     # 開啟日歷
-    button = driver.find_element_by_css_selector(
+    button = run_option.find_element_by_css_selector(
         "#myform > table > tbody > tr:nth-child(1) > td:nth-child(2) > button > img")
     button.click()
     time.sleep(2)
@@ -38,29 +38,31 @@ def choose_date():
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = driver.find_element_by_link_text("27")
+    button1 = run_option.find_element_by_link_text("28")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
-    button2 = driver.find_element_by_css_selector(
+    button2 = run_option.find_element_by_css_selector(
         "td[align ='left'] select[id ='MarketCode'] option[value ='0']")
     button2.click()
     time.sleep(2)
     # 送出查詢
-    button3 = driver.find_element_by_css_selector("input[type='button']")
+    button3 = run_option.find_element_by_css_selector("input[type='button']")
     button3.click()
     time.sleep(2)
 
 
-choose_date()
+"""adjust date of option daily trade website """
+
+choose_date(run_option)
 
 
-def option_callitem_crawling():
+def option_callitem_crawling(run_option):
     box = []
     # 日期資料
     for o in range(2, 42):
         temp = []
-        p = driver.find_element_by_css_selector(
+        p = run_option.find_element_by_css_selector(
             '#printhere > div:nth-child(3) > h3 > span.right')
         date = p.text
         temp.append(date)
@@ -68,31 +70,31 @@ def option_callitem_crawling():
     # 買權
         for i in range(o, o+1):
             # temp = []
-            a = driver.find_element_by_css_selector(
+            a = run_option.find_element_by_css_selector(
                 "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(1) > td > table > tbody > tr > td")
             call = a.text
             temp.append(call)
     # 項目欄位
             for j in range(i, i+1):
                 b = "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s)" % j
-                b1 = driver.find_elements_by_css_selector(b)
+                b1 = run_option.find_elements_by_css_selector(b)
     # 到期月份
                 for k in range(j, j+1):
                     c = "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s) > td:nth-child(1)" % (j)
-                    c1 = driver.find_element_by_css_selector(c)
+                    c1 = run_option.find_element_by_css_selector(c)
                     expire = c1.text
                     temp.append(expire)
     # 履約價格: Strike Price
                     for l in range(k, k+1):
                         d = "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s) > td:nth-child(2)" % (j)
-                        d1 = driver.find_element_by_css_selector(d)
+                        d1 = run_option.find_element_by_css_selector(d)
                         sp = d1.text
                         temp.append(sp)
     # 未平倉量: Open Interest
                         for m in range(l, l+1):
                             e = "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s) > td:nth-child(9)" % (
                                 j)
-                            e1 = driver.find_element_by_css_selector(e)
+                            e1 = run_option.find_element_by_css_selector(e)
                             oi = e1.text
                             temp.append(oi)
                             box.append(temp)
@@ -102,7 +104,9 @@ def option_callitem_crawling():
     print(box)
 
 
-# call_rawdata = option_callitem_crawling()
+"""adjust number of option_call items """
+
+# call_rawdata = option_callitem_crawling(run_option)
 
 
 def data_crawling_extract(call_rawdata):
@@ -158,47 +162,47 @@ def mysql_renewdata_insert(call_realdata):
 
 
 # mysql_renewdata_insert(call_realdata)
-# driver.close()
+# run_option.close()
 
 
-def option_put_item_crawling():
+def option_put_item_crawling(run_option):
     box1 = []
     # 日期資料
     for o in range(2, 42):
         temp = []
-        p = driver.find_element_by_css_selector(
+        p = run_option.find_element_by_css_selector(
             '#printhere > div:nth-child(3) > h3 > span.right')
         date = p.text
         temp.append(date)
         # print(temp)
     # 賣權
         for i in range(o, o+1):
-            a = driver.find_element_by_css_selector(
+            a = run_option.find_element_by_css_selector(
                 "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(1) > td > table > tbody > tr > td")
             put = a.text
             temp.append(put)
     # 項目欄位 (第2欄位算起)
             for j in range(i, i+1):
                 b = "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s)" % (j)
-                b1 = driver.find_elements_by_css_selector(b)
+                b1 = run_option.find_elements_by_css_selector(b)
     # 到期月份 (每一欄位中的第2個項目)
                 for k in range(j, j+1):
                     c = "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s) > td:nth-child(1)" % (j)
-                    c1 = driver.find_element_by_css_selector(c)
+                    c1 = run_option.find_element_by_css_selector(c)
                     expire = c1.text
                     temp.append(expire)
                     # print(temp)
     # 履約價格: Strike Price
                     for l in range(k, k+1):
                         d = "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s) > td:nth-child(2)" % (j)
-                        d1 = driver.find_element_by_css_selector(d)
+                        d1 = run_option.find_element_by_css_selector(d)
                         strike_price = d1.text
                         temp.append(strike_price)
     # 未平倉量: Open Interest
                         for m in range(l, l+1):
                             e = "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(%s) > td:nth-child(9)"\
                                 % (j)
-                            e1 = driver.find_element_by_css_selector(e)
+                            e1 = run_option.find_element_by_css_selector(e)
                             open_interest = e1.text
                             temp.append(open_interest)
                             box1.append(temp)
@@ -206,9 +210,9 @@ def option_put_item_crawling():
     # print(temp)
 
     # print(box1)
+"""adjust number of option_put items """
 
-
-put_rawdata = option_put_item_crawling()
+# put_rawdata = option_put_item_crawling(run_option)
 
 
 def data_crawling_extract(put_rawdata):
@@ -229,7 +233,7 @@ def data_crawling_extract(put_rawdata):
     return box2
 
 
-put_realdata = data_crawling_extract(put_rawdata)
+# put_realdata = data_crawling_extract(put_rawdata)
 
 
 def mysql_renewdata_insert(put_realdata):
@@ -263,5 +267,5 @@ def mysql_renewdata_insert(put_realdata):
     conn.close()
 
 
-mysql_renewdata_insert(put_realdata)
-driver.close()
+# mysql_renewdata_insert(put_realdata)
+# run_option.close()

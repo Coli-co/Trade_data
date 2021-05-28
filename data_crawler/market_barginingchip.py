@@ -43,7 +43,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button1.click()
     time.sleep(2)
-    button2 = driver.find_element_by_link_text("27")
+    button2 = driver.find_element_by_link_text("28")
     button2.click()
     time.sleep(2)
     button3 = driver.find_element_by_css_selector("#button")
@@ -73,7 +73,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button_1.click()
     time.sleep(2)
-    button_2 = driver.find_element_by_link_text("26")
+    button_2 = driver.find_element_by_link_text("27")
     button_2.click()
     time.sleep(2)
     button_3 = driver.find_element_by_css_selector("#button")
@@ -99,7 +99,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button1.click()
     time.sleep(2)
-    button2 = driver.find_element_by_link_text("25")
+    button2 = driver.find_element_by_link_text("26")
     button2.click()
     time.sleep(2)
     button3 = driver.find_element_by_css_selector("#button")
@@ -140,7 +140,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button > img")
     button7.click()
     time.sleep(2)
-    button8 = driver.find_element_by_link_text("27")
+    button8 = driver.find_element_by_link_text("28")
     button8.click()
     time.sleep(2)
     button9 = driver.find_element_by_css_selector("#submitButton")
@@ -189,7 +189,7 @@ def market_bargainingchip():
 
     temp.append(big_legalperson_trueposition)
     # print(temp)
-    # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     # 介面切換至三大法人計算散戶期貨籌碼
     driver.get('https://www.taifex.com.tw/cht/3/futContractsDate')
     time.sleep(2)
@@ -198,7 +198,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button10.click()
     time.sleep(2)
-    button11 = driver.find_element_by_link_text("27")
+    button11 = driver.find_element_by_link_text("28")
     button11.click()
     time.sleep(2)
     button12 = driver.find_element_by_css_selector("#button")
@@ -239,7 +239,7 @@ def market_bargainingchip():
     retailMTX = -(int(p2)+int(q2)+int(r2))
     temp.append(retailMTX)
     # print(temp)
-    # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     # 散戶option(當日未平倉 - 前一日未平倉)
     # 先計算前一日，選定前一日日期
     s = driver.get("https://www.taifex.com.tw/cht/3/callsAndPutsDate")
@@ -248,7 +248,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button13.click()
     time.sleep(2)
-    button14 = driver.find_element_by_link_text("26")
+    button14 = driver.find_element_by_link_text("27")
     button14.click()
     time.sleep(2)
     button15 = driver.find_element_by_css_selector("#button")
@@ -323,7 +323,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button16.click()
     time.sleep(2)
-    button17 = driver.find_element_by_link_text("27")
+    button17 = driver.find_element_by_link_text("28")
     button17.click()
     time.sleep(2)
     button18 = driver.find_element_by_css_selector("#button")
