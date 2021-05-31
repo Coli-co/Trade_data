@@ -38,7 +38,7 @@ def choose_date(run_option):
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = run_option.find_element_by_link_text("28")
+    button1 = run_option.find_element_by_link_text("31")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
@@ -55,6 +55,7 @@ def choose_date(run_option):
 """adjust date of option daily trade website """
 
 choose_date(run_option)
+# printhere > div:nth-child(3) > p.clearfix > span.right
 
 
 def option_callitem_crawling(run_option):
@@ -63,7 +64,7 @@ def option_callitem_crawling(run_option):
     for o in range(2, 42):
         temp = []
         p = run_option.find_element_by_css_selector(
-            '#printhere > div:nth-child(3) > h3 > span.right')
+            '#printhere > div:nth-child(3) > p.clearfix > span.right')
         date = p.text
         temp.append(date)
         # print(temp)
@@ -71,7 +72,7 @@ def option_callitem_crawling(run_option):
         for i in range(o, o+1):
             # temp = []
             a = run_option.find_element_by_css_selector(
-                "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(1) > td > table > tbody > tr > td")
+                "#printhere > div:nth-child(3) > table:nth-child(3) > tbody > tr:nth-child(2) > td > table > caption")
             call = a.text
             temp.append(call)
     # 項目欄位
@@ -164,21 +165,20 @@ def mysql_renewdata_insert(call_realdata):
 # mysql_renewdata_insert(call_realdata)
 # run_option.close()
 
-
 def option_put_item_crawling(run_option):
     box1 = []
     # 日期資料
     for o in range(2, 42):
         temp = []
         p = run_option.find_element_by_css_selector(
-            '#printhere > div:nth-child(3) > h3 > span.right')
+            '#printhere > div:nth-child(3) > p.clearfix > span.right')
         date = p.text
         temp.append(date)
         # print(temp)
     # 賣權
         for i in range(o, o+1):
             a = run_option.find_element_by_css_selector(
-                "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(1) > td > table > tbody > tr > td")
+                "#printhere > div:nth-child(3) > table:nth-child(4) > tbody > tr:nth-child(1) > td > table > caption")
             put = a.text
             temp.append(put)
     # 項目欄位 (第2欄位算起)
@@ -212,7 +212,7 @@ def option_put_item_crawling(run_option):
     # print(box1)
 """adjust number of option_put items """
 
-# put_rawdata = option_put_item_crawling(run_option)
+put_rawdata = option_put_item_crawling(run_option)
 
 
 def data_crawling_extract(put_rawdata):
@@ -233,7 +233,7 @@ def data_crawling_extract(put_rawdata):
     return box2
 
 
-# put_realdata = data_crawling_extract(put_rawdata)
+put_realdata = data_crawling_extract(put_rawdata)
 
 
 def mysql_renewdata_insert(put_realdata):
@@ -267,5 +267,5 @@ def mysql_renewdata_insert(put_realdata):
     conn.close()
 
 
-# mysql_renewdata_insert(put_realdata)
-# run_option.close()
+mysql_renewdata_insert(put_realdata)
+run_option.close()
