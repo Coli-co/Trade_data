@@ -16,18 +16,6 @@ def market_bargainingchip():
     # driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
     driver.get('https://www.twse.com.tw/zh/')
     time.sleep(3)
-    # 日期
-    # 調整月份
-    # 上月
-    # button0 = driver.find_element_by_css_selector(
-    #     "#ui-datepicker-div > div > a.ui-datepicker-prev.ui-corner-all")
-    # button0.click()
-    # time.sleep(2)
-    # 下月
-    # but = driver.find_element_by_css_selector(
-    #     "#ui-datepicker-div > div > a.ui-datepicker-next.ui-corner-all")
-    # but.click()
-    # time.sleep(2)
     button = driver.find_element_by_css_selector("li[class='info']")
     button.click()
     time.sleep(2)
@@ -54,7 +42,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button1.click()
     time.sleep(2)
-    button2 = driver.find_element_by_link_text("31")
+    button2 = driver.find_element_by_link_text("1")
     button2.click()
     time.sleep(2)
     button3 = driver.find_element_by_css_selector("#button")
@@ -77,19 +65,36 @@ def market_bargainingchip():
     # print(trueposition)
     temp.append(trueposition)
     # print(temp)
+    # 調整月份
+    # ui-datepicker-div > div > a.ui-datepicker-prev.ui-corner-all > span
+    # 上月
+    button00 = driver.find_element_by_css_selector(
+        "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
+    button00.click()
+    time.sleep(2)
+    button0 = driver.find_element_by_css_selector(
+        "#ui-datepicker-div > div > a.ui-datepicker-prev.ui-corner-all > span")
+    button0.click()
+    time.sleep(2)
+    button2 = driver.find_element_by_link_text("31")
+    button2.click()
+    time.sleep(2)
+    button3 = driver.find_element_by_css_selector("#button")
+    button3.click()
+    time.sleep(2)
 
     # 外資前一天成本
     # 選擇日期
-    button_1 = driver.find_element_by_css_selector(
-        "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
-    button_1.click()
-    time.sleep(2)
-    button_2 = driver.find_element_by_link_text("28")
-    button_2.click()
-    time.sleep(2)
-    button_3 = driver.find_element_by_css_selector("#button")
-    button_3.click()
-    time.sleep(2)
+    # button_1 = driver.find_element_by_css_selector(
+    #     "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
+    # button_1.click()
+    # time.sleep(2)
+    # button_2 = driver.find_element_by_link_text("28")
+    # button_2.click()
+    # time.sleep(2)
+    # button_3 = driver.find_element_by_css_selector("#button")
+    # button_3.click()
+    # time.sleep(2)
     previousone_money = driver.find_element_by_css_selector(
         "#printhere > div:nth-child(4) > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(6) > td:nth-child(13) > div:nth-child(1)")
     previousone_money1 = previousone_money.text
@@ -110,7 +115,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button1.click()
     time.sleep(2)
-    button2 = driver.find_element_by_link_text("27")
+    button2 = driver.find_element_by_link_text("28")
     button2.click()
     time.sleep(2)
     button3 = driver.find_element_by_css_selector("#button")
@@ -151,7 +156,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button > img")
     button7.click()
     time.sleep(2)
-    button8 = driver.find_element_by_link_text("31")
+    button8 = driver.find_element_by_link_text("1")
     button8.click()
     time.sleep(2)
     button9 = driver.find_element_by_css_selector("#submitButton")
@@ -209,7 +214,7 @@ def market_bargainingchip():
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
     button10.click()
     time.sleep(2)
-    button11 = driver.find_element_by_link_text("31")
+    button11 = driver.find_element_by_link_text("1")
     button11.click()
     time.sleep(2)
     button12 = driver.find_element_by_css_selector("#button")
@@ -253,18 +258,34 @@ def market_bargainingchip():
 
     # 散戶option(當日未平倉 - 前一日未平倉)
     # 先計算前一日，選定前一日日期
+
     s = driver.get("https://www.taifex.com.tw/cht/3/callsAndPutsDate")
     time.sleep(2)
-    button13 = driver.find_element_by_css_selector(
+    # 上月
+    button00 = driver.find_element_by_css_selector(
         "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
-    button13.click()
+    button00.click()
     time.sleep(2)
-    button14 = driver.find_element_by_link_text("28")
-    button14.click()
+    button0 = driver.find_element_by_css_selector(
+        "#ui-datepicker-div > div > a.ui-datepicker-prev.ui-corner-all > span")
+    button0.click()
     time.sleep(2)
-    button15 = driver.find_element_by_css_selector("#button")
-    button15.click()
+    button2 = driver.find_element_by_link_text("31")
+    button2.click()
     time.sleep(2)
+    button3 = driver.find_element_by_css_selector("#button")
+    button3.click()
+    time.sleep(2)
+    # button13 = driver.find_element_by_css_selector(
+    #     "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
+    # button13.click()
+    # time.sleep(2)
+    # button14 = driver.find_element_by_link_text("28")
+    # button14.click()
+    # time.sleep(2)
+    # button15 = driver.find_element_by_css_selector("#button")
+    # button15.click()
+    # time.sleep(2)
     # 先算前一日散戶sc未平倉
     s = driver.find_element_by_css_selector(
         "#printhere > div:nth-child(4) > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(4) > td:nth-child(11) > font")
@@ -328,18 +349,33 @@ def market_bargainingchip():
     g2 = g1.replace(",", "")
     previousbp = int(e2)+int(f2)+int(g2)
     # print(previousbp)
+    # 切換至當月
+    button00 = driver.find_element_by_css_selector(
+        "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
+    button00.click()
+    time.sleep(2)
+    button0 = driver.find_element_by_css_selector(
+        "#ui-datepicker-div > div > a.ui-datepicker-next.ui-corner-all > span")
+    button0.click()
+    time.sleep(2)
+    button2 = driver.find_element_by_link_text("1")
+    button2.click()
+    time.sleep(2)
+    button3 = driver.find_element_by_css_selector("#button")
+    button3.click()
+    time.sleep(2)
 
     # 選定當日日期
-    button16 = driver.find_element_by_css_selector(
-        "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
-    button16.click()
-    time.sleep(2)
-    button17 = driver.find_element_by_link_text("31")
-    button17.click()
-    time.sleep(2)
-    button18 = driver.find_element_by_css_selector("#button")
-    button18.click()
-    time.sleep(2)
+    # button16 = driver.find_element_by_css_selector(
+    #     "#uForm > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(1) > td:nth-child(2) > button")
+    # button16.click()
+    # time.sleep(2)
+    # button17 = driver.find_element_by_link_text("31")
+    # button17.click()
+    # time.sleep(2)
+    # button18 = driver.find_element_by_css_selector("#button")
+    # button18.click()
+    # time.sleep(2)
 
     # 當日散戶sc未平倉
     ss = driver.find_element_by_css_selector(
@@ -425,7 +461,7 @@ Remembered to adjust the date below:
 
 1. foreign_average_cost, adjust to currentdate first and then the date of two days ago
 2. option of bargaining chips for retail_sc : adjust to the date of one day ago first and then currentdate
-3. other items: adjust to currentdate 
+3. other items: adjust to currentdate
 
 """
 
