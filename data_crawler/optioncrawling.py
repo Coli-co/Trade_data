@@ -38,7 +38,7 @@ def choose_date(run_option):
     # but.click()
     # time.sleep(2)
     # 選擇日期
-    button1 = run_option.find_element_by_link_text("7")
+    button1 = run_option.find_element_by_link_text("8")
     button1.click()
     time.sleep(2)
     # 選擇交易時段 (一般交易時段:value = 0 盤後:value =1)
@@ -55,7 +55,6 @@ def choose_date(run_option):
 """adjust date of option daily trade website """
 
 choose_date(run_option)
-# printhere > div:nth-child(3) > p.clearfix > span.right
 
 
 def option_callitem_crawling(run_option):
@@ -108,7 +107,7 @@ def option_callitem_crawling(run_option):
 
 """adjust number of option_call items """
 
-call_rawdata = option_callitem_crawling(run_option)
+# call_rawdata = option_callitem_crawling(run_option)
 
 
 def data_crawling_extract(call_rawdata):
@@ -128,7 +127,7 @@ def data_crawling_extract(call_rawdata):
     return box2
 
 
-call_realdata = data_crawling_extract(call_rawdata)
+# call_realdata = data_crawling_extract(call_rawdata)
 
 
 def mysql_renewdata_insert(call_realdata):
@@ -163,8 +162,8 @@ def mysql_renewdata_insert(call_realdata):
     conn.close()
 
 
-mysql_renewdata_insert(call_realdata)
-run_option.close()
+# mysql_renewdata_insert(call_realdata)
+# run_option.close()
 
 
 def option_put_item_crawling(run_option):
@@ -219,7 +218,7 @@ def option_put_item_crawling(run_option):
 
 """adjust number of option_put items """
 
-# put_rawdata = option_put_item_crawling(run_option)
+put_rawdata = option_put_item_crawling(run_option)
 
 
 def data_crawling_extract(put_rawdata):
@@ -240,7 +239,7 @@ def data_crawling_extract(put_rawdata):
     return box2
 
 
-# put_realdata = data_crawling_extract(put_rawdata)
+put_realdata = data_crawling_extract(put_rawdata)
 
 
 def mysql_renewdata_insert(put_realdata):
@@ -274,5 +273,5 @@ def mysql_renewdata_insert(put_realdata):
     conn.close()
 
 
-# mysql_renewdata_insert(put_realdata)
-# run_option.close()
+mysql_renewdata_insert(put_realdata)
+run_option.close()
