@@ -20,15 +20,15 @@ url4 = os.getenv("url4")
 
 def get_page():
     driver = webdriver.Chrome('D:\\timothyTest\data_crawler\chromedriver')
-    page = driver.get(url4)
+    page = driver.get(url2)
 
     return driver
 
 
 # run_listwinner = get_page()
-# run_listloser = get_page()
+run_listloser = get_page()
 # run_otcwinner = get_page()
-run_otcloser = get_page()
+# run_otcloser = get_page()
 
 
 def sector_of_listwinner(run_listwinner):
@@ -226,7 +226,7 @@ def sector_of_listloser(run_listloser):
     return box
 
 
-# listloser_info = sector_of_listloser(run_listloser)
+listloser_info = sector_of_listloser(run_listloser)
 
 
 def sector_of_otcwinner(run_otcwinner):
@@ -424,7 +424,7 @@ def sector_of_otcloser(run_otcloser):
     return box
 
 
-otcloser_info = sector_of_otcloser(run_otcloser)
+# otcloser_info = sector_of_otcloser(run_otcloser)
 
 """ 
 Get information from  sector of liststock which dominate the day of high_and_low .
@@ -481,7 +481,7 @@ def data_crawling_extract(listloser_info):
     return box2
 
 
-# real_data_get2 = data_crawling_extract(listloser_info)
+real_data_get2 = data_crawling_extract(listloser_info)
 
 
 def data_crawling_extract(otcwinner_info):
@@ -527,7 +527,7 @@ def data_crawling_extract(otcloser_info):
     return box2
 
 
-real_data_get4 = data_crawling_extract(otcloser_info)
+# real_data_get4 = data_crawling_extract(otcloser_info)
 
 
 def listwinner_data_insert(real_data_get1):
@@ -603,7 +603,7 @@ def listloser_data_insert(real_data_get2):
     conn.close()
 
 
-# mysql_data_insert2 = listloser_data_insert(real_data_get2)
+mysql_data_insert2 = listloser_data_insert(real_data_get2)
 
 
 def otcwinner_data_insert(real_data_get3):
@@ -675,10 +675,10 @@ def otcloser_data_insert(real_data_get4):
     conn.close()
 
 
-mysql_data_insert4 = otcloser_data_insert(real_data_get4)
+# mysql_data_insert4 = otcloser_data_insert(real_data_get4)
 
 
 # run_listwinner.close()
-# run_listloser.close()
+run_listloser.close()
 # run_otcwinner.close()
-run_otcloser.close()
+# run_otcloser.close()
