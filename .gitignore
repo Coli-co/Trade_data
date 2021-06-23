@@ -32,4 +32,19 @@ API_test/
 
 courselearn.py
 
-Flaskintroduction
+Webframework/Flask/authentication-databases-notes/website/__pycache__
+Webframework/Flask/authentication-databases-notes/website/.html
+Webframework/Flask/authentication-databases-notes/website/*.py
+
+Webframework/Flask/database-crud/__pycache__
+Webframework/Flask/database-crud/env
+Webframework/Flask/database-crud/templates
+Webframework/Flask/database-crud/*.py
+
+
+Webframework/Flask/sharedata_and_readcsv/__pycache__
+Webframework/Flask/sharedata_and_readcsv/*.csv
+Webframework/Flask/sharedata_and_readcsv/*.py
+Webframework/Flask/sharedata_and_readcsv/*.html
+
+
