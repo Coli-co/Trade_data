@@ -32,8 +32,7 @@ font1 = {'family': 'serif', 'color': 'blue', 'size': 18}
 font2 = {'family': 'serif', 'color': 'darkred', 'size': 12}
 
 # B1 Short Strategy
-df = pd.read_csv(
-    'D://timothyTest/readfile/Short_strategies_ net_momentum_B1.csv')
+df = pd.read_csv('D://timothyTest/readfile_plot/Short_strategies_ net_momentum_B1.csv')
 a = times_and_cumulativeprofitandloss()
 x = np.array(a[0])
 y = np.array(a[1])
@@ -44,8 +43,7 @@ plt.xlabel("Trade Times", fontdict=font2)
 plt.ylabel("Stategy Net Momentum", fontdict=font2)
 
 # B2 Short Strategy
-df = pd.read_csv(
-    'D://timothyTest/readfile/Short_strategies_ net_momentum_B2.csv')
+df = pd.read_csv('D://timothyTest/readfile_plot/Short_strategies_ net_momentum_B2.csv')
 b = times_and_cumulativeprofitandloss()
 x = np.array(b[0])
 y = np.array(b[1])
@@ -56,8 +54,7 @@ plt.xlabel("Trade Times", fontdict=font2)
 plt.ylabel("Strategy Net Momentum", fontdict=font2)
 
 # B3 Short Strategy
-df = pd.read_csv(
-    'D://timothyTest/readfile/Short_strategies_ net_momentum_B3.csv')
+df = pd.read_csv('D://timothyTest/readfile_plot/Short_strategies_ net_momentum_B3.csv')
 c = times_and_cumulativeprofitandloss()
 x = np.array(c[0])
 y = np.array(c[1])
@@ -69,8 +66,7 @@ plt.ylabel("Strategy Net Momentum", fontdict=font2)
 
 
 # B4 Short Strategy
-df = pd.read_csv(
-    'D://timothyTest/readfile/Short_strategies_ net_momentum_B4.csv')
+df = pd.read_csv('D://timothyTest/readfile_plot/Short_strategies_ net_momentum_B4.csv')
 d = times_and_cumulativeprofitandloss()
 x = np.array(d[0])
 y = np.array(d[1])
@@ -81,8 +77,7 @@ plt.xlabel("Trade Times", fontdict=font2)
 plt.ylabel("Strategy Net Momentum", fontdict=font2)
 
 # B5 Short Strategy
-df = pd.read_csv(
-    'D://timothyTest/readfile/Short_strategies_ net_momentum_B5.csv')
+df = pd.read_csv('D://timothyTest/readfile_plot/Short_strategies_ net_momentum_B5.csv')
 e = times_and_cumulativeprofitandloss()
 x = np.array(e[0])
 y = np.array(e[1])
@@ -93,8 +88,7 @@ plt.xlabel("Trade Times", fontdict=font2)
 plt.ylabel("Strategy Net Momentum", fontdict=font2)
 
 # B6 Short Strategy
-df = pd.read_csv(
-    'D://timothyTest/readfile/Short_strategies_ net_momentum_B6.csv')
+df = pd.read_csv('D://timothyTest/readfile_plot/Short_strategies_ net_momentum_B6.csv')
 f = times_and_cumulativeprofitandloss()
 x = np.array(f[0])
 y = np.array(f[1])

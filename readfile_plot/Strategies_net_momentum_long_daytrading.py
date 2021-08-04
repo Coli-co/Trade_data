@@ -33,7 +33,7 @@ font2 = {'family': 'serif', 'color': 'darkred', 'size': 12}
 
 # A1 Short Strategy
 df = pd.read_csv(
-    'D://timothyTest/readfile/Long_strategies_net_momentum_A1.csv')
+    'D://timothyTest/readfile_plot/Long_strategies_net_momentum_A1.csv')
 a = times_and_cumulativeprofitandloss()
 x = np.array(a[0])
 y = np.array(a[1])
@@ -45,7 +45,7 @@ plt.ylabel("Stategy Net Momentum", fontdict=font2)
 
 # A2 Short Strategy
 df = pd.read_csv(
-    'D://timothyTest/readfile/Long_strategies_net_momentum_A2.csv')
+    'D://timothyTest/readfile_plot/Long_strategies_net_momentum_A2.csv')
 b = times_and_cumulativeprofitandloss()
 x = np.array(b[0])
 y = np.array(b[1])
@@ -57,7 +57,7 @@ plt.ylabel("Strategy Net Momentum", fontdict=font2)
 
 # A3 Short Strategy
 df = pd.read_csv(
-    'D://timothyTest/readfile/Long_strategies_net_momentum_A3.csv')
+    'D://timothyTest/readfile_plot/Long_strategies_net_momentum_A3.csv')
 c = times_and_cumulativeprofitandloss()
 x = np.array(c[0])
 y = np.array(c[1])
@@ -70,7 +70,7 @@ plt.ylabel("Strategy Net Momentum", fontdict=font2)
 # Trading times of A4 are too few times
 # A4 Short Strategy
 # df = pd.read_csv(
-#     'D://timothyTest/readfile/Long_strategies_net_momentum_A4.csv')
+#     'D://timothyTest/readfile_plot/Long_strategies_net_momentum_A4.csv')
 # d = times_and_cumulativeprofitandloss()
 # x = np.array(d[0])
 # y = np.array(d[1])
@@ -82,7 +82,7 @@ plt.ylabel("Strategy Net Momentum", fontdict=font2)
 
 # A7 Short Strategy
 # df = pd.read_csv(
-#     'D://timothyTest/readfile/Long_strategies_net_momentum_A7.csv')
+#     'D://timothyTest/readfile_plot/Long_strategies_net_momentum_A7.csv')
 # e = times_and_cumulativeprofitandloss()
 # x = np.array(e[0])
 # y = np.array(e[1])
