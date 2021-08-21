@@ -1,6 +1,6 @@
-Trade_data
+Trade_analysis
 ---
-This is a rough analysis about data from different financial products maily in Taiwan area. Observing trends by plotting graphs so that to avoid making unnecessary
+This is a simple analysis about data from different financial products maily in Taiwan area. Observing trends by plotting graphs so that to avoid making unnecessary
 errors and help make investment decesion .   
 
 

@@ -9,10 +9,13 @@ plot/__pycache__
 
 readfile_plot/*.csv
 
+JS/
 
+Nodejs/
 
 *.png
 
+express-demo/
 
 *.html
 
